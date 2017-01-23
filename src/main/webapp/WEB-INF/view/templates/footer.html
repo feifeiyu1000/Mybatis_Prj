@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <!-- ###################  START FOOTER ##################-->
+    <footer th:fragment="footer" id="footer">
+        <div class="mui-container-fluid">
+            <br/>
+            Made with ♥ by <a href="https://www.muicss.com">MUI</a>
+        </div>
+    </footer>
+    <!-- ###################  END FOOTER ##################-->
+
+    <!-- ###################  START SCRPTS LINK ##################-->
+    <div th:fragment="scripts_link">
+        <script
+                th:src="@{https://code.jquery.com/jquery-3.1.1.slim.min.js}"
+                integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+                crossorigin="anonymous"></script>
+        <script th:src="@{//cdn.muicss.com/mui-latest/js/mui.min.js}"></script>
+        <script
+                th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+        <script
+                th:src="@{/resources/js/material.js}">
+        </script>
+    </div>
+    <!-- ###################  END SCRIPTS LINK ##################-->
+
+</body>
+</html>
