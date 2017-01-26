@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.springHello.mapper.BookMapper">
+
+
+
+    <!-- Tutor result map -->
+    <resultMap id="BookResult" type="Book">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="nbrPage" column="nbrPage"/>
+        <result property="creationDate" column="creationDate"/>
+    </resultMap>
+
+
+    <!-- Tutor result map
+    <resultMap id="TutorResult" type="Tutor">
+        <id property="id" column="tutor_id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <collection property="courses" resultMap="CourseResult"/>
+    </resultMap>
+
+
+     One-to-many mapping with nested select
+    <resultMap id="TutorResultV2" type="Tutor">
+        <id property="id" column="TUTOR_ID"/>
+        <result property="id" column="TUTOR_ID"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <collection property="courses" column="tutor_id" select="findCoursesByTutor"/>
+    </resultMap>
+    -->
+    <select id="findBookById" parameterType="Long" resultMap="BookResult">
+        SELECT id,name,nbrPage,creationDate FROM BOOK
+        WHERE id = #{id}
+    </select>
+
+    <select id="findAllBooks"  resultMap="BookResult">
+      SELECT id,name,nbrPage,creationDate FROM BOOK
+    </select>
+
+    <select id="findAllBooksV2" resultMap="BookResult">
+        SELECT id,name,nbrPage,creationDate FROM BOOK
+    </select>
+
+
+</mapper>
