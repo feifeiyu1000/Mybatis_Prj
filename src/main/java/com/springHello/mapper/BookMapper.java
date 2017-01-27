@@ -13,18 +13,9 @@ import java.util.List;
  */
 public interface BookMapper {
 
-    /*
-    @Select("SELECT id,name,nbrPage,creationDate FROM BOOK")
-    @Results({
-            @Result(id=true, property = "id", column = "id"),
-            @Result(property = "name",column = "name"),
-            @Result(property = "nbrPage",column = "nbrPage"),
-            @Result(property = "creationDate",column = "creationDate")
-    })
-    */
-    List<Book> findAllBooks();
-
-    Collection<Book> findAllBooksV2();
-
     Book findBookById(Long id);
+    List<Book> findAllBooks();
+    void insertBook(Book book);
+    void deleteBook(Long id);
+    Book findBookByName(String name);
 }

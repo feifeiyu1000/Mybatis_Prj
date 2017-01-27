@@ -9,7 +9,7 @@
 
 
     <!-- Tutor result map -->
-    <resultMap id="BookResult" type="Book">
+    <resultMap id="BookResult" type="com.springHello.bean.Book">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="nbrPage" column="nbrPage"/>
@@ -37,18 +37,29 @@
         <collection property="courses" column="tutor_id" select="findCoursesByTutor"/>
     </resultMap>
     -->
-    <select id="findBookById" parameterType="Long" resultMap="BookResult">
+
+
+    <select id="findBookById" parameterType="long" resultMap="BookResult">
         SELECT id,name,nbrPage,creationDate FROM BOOK
         WHERE id = #{id}
     </select>
 
-    <select id="findAllBooks"  resultMap="BookResult">
-      SELECT id,name,nbrPage,creationDate FROM BOOK
+    <select id="findAllBooks" resultMap="BookResult">
+        SELECT * FROM BOOK
     </select>
 
-    <select id="findAllBooksV2" resultMap="BookResult">
-        SELECT id,name,nbrPage,creationDate FROM BOOK
+    <select id="findBookByName" parameterType="String" resultMap="BookResult">
+        SELECT * FROM BOOK
+        WHERE name = #{name}
     </select>
 
+    <insert id="insertBook" parameterType="Book" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO BOOK (name,nbrPage,creationDate)
+        VALUES (#{name}, #{nbrPage}, #{creationDate})
+    </insert>
+
+    <delete id="deleteBook" parameterType="long">
+        DELETE FROM BOOK WHERE id=#{id}
+    </delete>
 
 </mapper>
