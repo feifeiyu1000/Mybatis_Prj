@@ -9,15 +9,13 @@
                         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
+    <!-- To use @Controller -->
     <context:component-scan base-package="com.springHello.controller"/>
 
 
     <mvc:annotation-driven/>
 
-
-    <mvc:resources mapping="/css/**" location="/WEB-INF/statics/css/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>
-    <mvc:resources mapping="/images/**" location="/WEB-INF/statics/images/"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- **************************************************************** -->
     <!--  THYMELEAF-SPECIFIC ARTIFACTS                                    -->
@@ -39,8 +37,5 @@
     <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
     </bean>
-
-    <!--<import resource="dispatcher-servlet.xml" />-->
-
 
 </beans>
