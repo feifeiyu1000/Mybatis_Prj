@@ -1,13 +1,14 @@
 package com.springHello.exception;
 
+
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by mar1 on 2/3/17.
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {
 
-    public static final String DEFAULT_ERROR_VIEW = "errorPage";
+    public static final String DEFAULT_ERROR_VIEW = "error";
 
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, HttpServletResponse res, Exception e) throws Exception {
         // If the exception is annotated with @ResponseStatus rethrow it and let
         // the framework handle it - like the OrderNotFoundException example
         // at the start of this post.
@@ -31,6 +32,7 @@ public class GlobalDefaultExceptionHandler {
         ModelAndView mav = new ModelAndView();
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
+        mav.addObject("status", res.getStatus());
         mav.setViewName(DEFAULT_ERROR_VIEW);
         return mav;
     }

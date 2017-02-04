@@ -22,16 +22,12 @@ public class HomeController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = {"/","/home"}, method = RequestMethod.GET)
     public String getHome() throws Exception {
         if(true) throw new Exception();
         return "index";
     }
 
-    @RequestMapping(path = "/home", method = RequestMethod.GET)
-    public String getHome1(){
-        return "index";
-    }
 
     @RequestMapping("/books")
     public String getBooks(Model model){
@@ -43,7 +39,7 @@ public class HomeController {
     @RequestMapping("/book/{id}")
     public String getBook(@PathVariable("id") long id, Model model){
         Book book = bookService.findBookById(id);
-        if(true) throw new BookNotFoundException("Book with ID "+id+" not found");
+        if(true) throw new BookNotFoundException();
 
         model.addAttribute(book);
         return "book";
