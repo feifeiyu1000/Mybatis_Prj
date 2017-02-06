@@ -17,18 +17,22 @@
 
     <!-- ###################  START SCRPTS LINK ##################-->
     <div th:fragment="scripts_link">
-        <script
-                th:src="@{https://code.jquery.com/jquery-3.1.1.slim.min.js}"
-                integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
-                crossorigin="anonymous"></script>
-        <script th:src="@{//cdn.muicss.com/mui-latest/js/mui.min.js}"></script>
-        <script
-                th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-                crossorigin="anonymous"></script>
-        <script
-                th:src="@{/resources/js/material.js}">
-        </script>
+        <!-- jQuery -->
+        <script th:src="@{/resources/vendor/jquery/jquery.min.js}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script th:src="@{/resources/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script th:src="@{/resources/vendor/metisMenu/metisMenu.min.js}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script th:src="@{/resources/vendor/raphael/raphael.min.js}"></script>
+        <script th:src="@{/resources/vendor/morrisjs/morris.min.js}"></script>
+        <script th:src="@{/resources/data/morris-data.js}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script th:src="@{/resources/dist/js/sb-admin-2.js}"></script>
     </div>
     <!-- ###################  END SCRIPTS LINK ##################-->
 
