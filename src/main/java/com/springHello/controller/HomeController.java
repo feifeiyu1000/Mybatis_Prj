@@ -22,9 +22,14 @@ public class HomeController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = {"/","/home"}, method = RequestMethod.GET)
+    @RequestMapping(path = {"/"}, method = RequestMethod.GET)
     public String getHome() throws Exception {
         if(true) throw new Exception();
+        return "index";
+    }
+
+    @RequestMapping(path = {"/home"}, method = RequestMethod.GET)
+    public String getIndex() {
         return "index";
     }
 
