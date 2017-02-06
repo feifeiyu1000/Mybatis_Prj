@@ -1,6 +1,6 @@
 CREATE TABLE BOOK (
-  id BIGINT AUTO_INCREMENT;
-  name VARCHAR(50);
-  nbrPage INT;
-  creationDate TIMESTAMP ;
+  id BIGINT AUTO_INCREMENT NOT NULL,
+  name VARCHAR(50),
+  nbrPage INT,
+  creationDate TIMESTAMP
 )
