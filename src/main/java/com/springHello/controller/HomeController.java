@@ -22,13 +22,21 @@ public class HomeController {
     @Autowired
     private BookService bookService;
 
+<<<<<<< HEAD
     @RequestMapping(path = {"/"}, method = RequestMethod.GET)
+=======
+    @RequestMapping(path = {"/home"}, method = RequestMethod.GET)
+>>>>>>> configException
     public String getHome() throws Exception {
         if(true) throw new Exception();
         return "index";
     }
 
+<<<<<<< HEAD
     @RequestMapping(path = {"/home"}, method = RequestMethod.GET)
+=======
+    @RequestMapping(path = {"/"}, method = RequestMethod.GET)
+>>>>>>> configException
     public String getIndex() {
         return "index";
     }

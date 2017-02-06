@@ -9,11 +9,21 @@
         <head th:fragment="head">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
-            <link th:href="@{//cdn.muicss.com/mui-latest/css/mui.min.css}" rel="stylesheet" type="text/css" />
-            <link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}" />
-            <link th:href="@{/resources/css/material.css}" rel="stylesheet" media="screen" />
-            <link th:href="@{/resources/css/myStyle.css}" rel="stylesheet" media="screen" />
+            <!-- Bootstrap Core CSS -->
+            <link th:href="@{/resources/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+            <!-- MetisMenu CSS -->
+            <link th:href="@{/resources/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet"/>
+
+            <!-- Custom CSS -->
+            <link th:href="@{/resources/dist/css/sb-admin-2.css}" rel="stylesheet"/>
+
+            <!-- Morris Charts CSS -->
+            <link th:href="@{/resources/vendor/morrisjs/morris.css}" rel="stylesheet"/>
+
+            <!-- Custom Fonts -->
+            <link th:href="@{/resources/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+
         </head>
 
 
