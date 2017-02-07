@@ -14,13 +14,14 @@ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <!-- Start Config flyway -->
     <!-- Flyway configuration -->
-
+    <!--
     <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
         <property name="baselineOnMigrate" value="true" />
-        <property name="locations" value="classpath:db/migrationV2"/>
+        <property name="locations" value="classpath:db/migrationV3"/>
         <property name="dataSource" ref="dataSource" />
+        <property name="validateOnMigrate" value="false"/>
     </bean>
-
+    -->
     <!--End Flyway configuration-->
 
 
