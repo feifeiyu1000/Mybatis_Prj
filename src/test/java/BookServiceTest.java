@@ -1,26 +1,18 @@
 import com.springHello.bean.Book;
-import com.springHello.mapper.BookMapper;
 import com.springHello.service.BookService;
-import com.springHello.service.BookServiceImpl;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by root on 1/26/17.
@@ -35,27 +27,27 @@ public class BookServiceTest {
     @Test
     public void testFindAllBooks(){
         List<Book> books = bookService.findAllBooks();
-        assertEquals(books.size(),2);
+        assertEquals(books.size(),5);
         books.stream().forEach(System.out::println);
     }
 
     @Test
     public void testInsertBook(){
         Book book = new Book();
-        book.setName("MyBatis");
+        book.setName("AngularJs");
         book.setNbrPage(200);
         book.setCreationDate(new Date());
         bookService.insertBook(book);
         List<Book> books = bookService.findAllBooks();
         Long count = books.stream()
-                .filter((b) -> b.getName().equals("MyBatis"))
+                .filter((b) -> b.getName().equals("AngularJs"))
                 .count();
         assertEquals(Optional.ofNullable(count), Optional.of(1L));
     }
 
     @Test
     public void testDeleteBook(){
-        Book book1 = bookService.findBookByName("MyBatis");
+        Book book1 = bookService.findBookByName("AngularJs");
         bookService.deleteBook(book1.getId());
         Book book = bookService.findBookById(book1.getId());
         assertNull(book);
@@ -63,7 +55,7 @@ public class BookServiceTest {
 
     @Test
     public void testFindBookByName(){
-        Book book = bookService.findBookByName("JavaEE");
+        Book book = bookService.findBookByName("Java");
         assertNotNull(book);
     }
 

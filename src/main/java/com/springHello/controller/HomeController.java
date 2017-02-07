@@ -1,12 +1,15 @@
 package com.springHello.controller;
 
 import com.springHello.bean.Book;
+import com.springHello.exception.BookNotFoundException;
 import com.springHello.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,15 +22,17 @@ public class HomeController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String getHome(){
+
+    @RequestMapping(path = {"/home"}, method = RequestMethod.GET)
+    public String getHome() {
+        return "index";
+    }
+    @RequestMapping(path = {"/"}, method = RequestMethod.GET)
+    public String getIndex() throws Exception {
+        if(true) throw new Exception();
         return "index";
     }
 
-    @RequestMapping(path = "/home", method = RequestMethod.GET)
-    public String getHome1(){
-        return "index";
-    }
 
     @RequestMapping("/books")
     public String getBooks(Model model){
@@ -35,6 +40,21 @@ public class HomeController {
         model.addAttribute("books",books);
         return "books";
     }
+
+    @RequestMapping("/book/{id}")
+    public String getBook(@PathVariable("id") long id, Model model){
+        Book book = bookService.findBookById(id);
+        if(true) throw new BookNotFoundException();
+
+        model.addAttribute(book);
+        return "book";
+    }
+
+    @RequestMapping(path = "/error", method = RequestMethod.GET)
+    public String getError(){
+        return "errorPage";
+    }
+
 
 
 }

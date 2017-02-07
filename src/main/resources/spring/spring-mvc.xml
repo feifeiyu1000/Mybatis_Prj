@@ -10,7 +10,8 @@
 
 
     <!-- To use @Controller -->
-    <context:component-scan base-package="com.springHello.controller"/>
+    <context:component-scan base-package="com.springHello.controller,com.springHello.exception"/>
+
 
 
     <mvc:annotation-driven/>

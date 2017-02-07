@@ -12,8 +12,11 @@
         <spring.version>4.3.2.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
         <thymeleaf.version>2.1.3.RELEASE</thymeleaf.version>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.12</junit.version>
         <logback.version>1.1.3</logback.version>
+        <database.name>testMyBatis</database.name>
+        <database.driver>com.mysql.jdbc.Driver</database.driver>
+        <database.url>jdbc:mysql://localhost</database.url>
     </properties>
     <dependencies>
 
@@ -104,20 +107,52 @@
         </dependency>
 
         <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>com.googlecode.flyway</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <driver>${database.driver}</driver>
+                    <url>${database.url}</url>
+                    <user>root</user>
+                    <password>Marsql1$@</password>
+                    <schemas>
+                        <schema>${database.name}</schema>
+                    </schemas>
+                    <locations>
+                        <location>
+                            filesystem:/home/mar1/IdeaProjects/Mybatis_Prj/src/main/resources/db/migration
+                        </location>
+                    </locations>
+                    <initOnMigrate>true</initOnMigrate>
+                    <placeholders>
+                        <db.name>${database.name}</db.name>
+                    </placeholders>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
