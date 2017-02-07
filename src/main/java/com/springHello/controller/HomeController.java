@@ -38,7 +38,7 @@ public class HomeController {
     public String getBooks(Model model){
         List<Book> books = bookService.findAllBooks();
         model.addAttribute("books",books);
-        return "books";
+        return "booksList";
     }
 
     @RequestMapping("/book/{id}")
