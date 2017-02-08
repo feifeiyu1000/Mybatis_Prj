@@ -3,57 +3,103 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="templates/header :: head"></head>
 <body>
-<header id="header">
-    <div class="mui-appbar mui--appbar-line-height">
-        <div class="mui-container-fluid">
-            <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer"></a>
-            <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer"></a>
+<div id="wrapper">
 
-            <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">Brand.io</span>
-        </div>
-    </div>
-</header>
-<div id="content-wrapper">
-    <div class="mui--appbar-height"></div>
-    <div class="mui-container-fluid">
-        <h1>Support Friendly Error Page</h1>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div th:replace="templates/navigation::navbar"></div>
+        <!-- /.navbar-header -->
 
-        <!--  As we are using Thymeleaf, you might consider using
-              ${#httpServletRequest.requestURL}. But that returns the path
-              to this error page.  Hence we explicitly add the url to the
-              Model in some of the example code. -->
-        <p th:if="${url}">
-            <b>Page:</b> <span th:text="${url}">Page URL</span>
-        </p>
+        <ul class="nav navbar-top-links navbar-right">
+            <li th:replace="templates/navigation::dropdown-msg"></li>
 
-        <p th:if="${timestamp}" id='created'>
-            <b>Occurred:</b> <span th:text="${timestamp}">Timestamp</span>
-        </p>
+            <!-- /.dropdown -->
+            <li th:replace="templates/navigation::dropdown-task"></li>
+            <!-- /.dropdown -->
 
-        <p th:if="${status}">
-            <b>Response Status:</b> <span th:text="${status}">status-code</span> <span
-                th:if="${error}" th:text="'('+${error}+')'">error ...</span>
-        </p>
+            <li th:replace="templates/navigation::dropdown-alert"></li>
+            <!-- /.dropdown -->
 
-        <p>Application has encountered an error. Please contact support on
-            ...</p>
-
-        <p>Support may ask you to right click to view page source.</p>
-
-        <!--
-          // Hidden Exception Details  - this is not a recommendation, but here is
-          // how you hide an exception in the page using Thymeleaf
-          -->
-        <div th:utext="'&lt;!--'" th:remove="tag"></div>
-        <div th:utext="'Failed URL: ' +  ${url}" th:remove="tag">${url}</div>
-        <div th:utext="'Exception: ' + ${exception.message}" th:remove="tag">${exception.message}</div>
-        <ul th:remove="tag">
-            <li th:each="ste : ${exception.stackTrace}" th:remove="tag"><span
-                    th:utext="${ste}" th:remove="tag">${ste}</span></li>
+            <li th:replace="templates/navigation::dropdown-user"></li>
+            <!-- /.dropdown -->
         </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a th:href="@{/home}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/books}"><i class="fa fa-table fa-fw"></i> Books</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="blank.html">Blank Page</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Login Page</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <!-- End Navigation -->
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div th:replace="templates/error::errorTemplate"></div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
     </div>
+    <!-- /#page-wrapper -->
+
 </div>
+<!-- /#wrapper -->
+
 <div th:replace="templates/footer :: footer"></div>
 <div th:replace="templates/footer :: scripts_link"></div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

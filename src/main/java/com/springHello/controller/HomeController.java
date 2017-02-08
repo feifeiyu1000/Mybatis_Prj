@@ -50,6 +50,15 @@ public class HomeController {
         return "book";
     }
 
+    @RequestMapping("/book/delete/{id}")
+    public String deleteBook(@PathVariable("id") long id) throws BookNotFoundException {
+        if(bookService.findBookById(id) != null)
+            bookService.deleteBook(id);
+        else
+            throw new BookNotFoundException("Book doesn't exist");
+        return "redirect:/books";
+    }
+
     @RequestMapping(path = "/error", method = RequestMethod.GET)
     public String getError(){
         return "errorPage";

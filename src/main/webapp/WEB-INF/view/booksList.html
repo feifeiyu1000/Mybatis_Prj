@@ -98,8 +98,9 @@
                                     <td th:text="${book.name}"></td>
                                     <td th:text="${book.nbrPage}"></td>
                                     <td th:text="${book.creationDate}"></td>
-                                    <td>
-                                        <a th:href="@{/book/}+${book.id}" type="button" class="btn btn-info custom-btn"><i class="fa fa-list"></i> detail</a>
+                                    <td class="text-center">
+                                      <!--  <a th:href="@{/book/}+${book.id}" type="button" class="btn btn-info custom-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</a>-->
+                                        <button type="button" class="btn btn-info custom-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</button>
                                         <a th:href="@{/book/edit/}+${book.id}" type="button" class="btn btn-warning custom-btn"><i class="fa fa-edit"></i> edit</a>
                                         <a th:href="@{/book/delete/}+${book.id}" type="button" class="btn btn-danger custom-btn"><i class="fa fa-trash-o"></i> delete</a>
                                     </td>
@@ -124,7 +125,7 @@
 
 </div>
 <!-- /#wrapper -->
-
+<div th:replace="templates/model::model-detail-book"></div>
 <div th:replace="templates/footer :: footer"></div>
 <div th:replace="templates/footer :: scripts_link"></div>
 </body>

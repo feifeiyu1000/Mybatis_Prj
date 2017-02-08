@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="col-lg-8 col-lg-offset-2 text-center" th:fragment="errorTemplate">
+        <div class="logo">
+            <h1 th:text="'OPPS, Error ' + ${status}">OPPS, Error 404 !</h1>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-lg-8  col-lg-offset-2">
+            <div class="input-group">
+                <input type="text" placeholder="Write Your Message" class="form-control"/>
+                <span class="input-group-btn">
+			<button class="btn btn-danger" type="button">Contact Support</button>
+		      </span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br/><br/>
+        <p class="text-muted">Theere is some error here, Please try later. </p>
+        <div class="clearfix"></div>
+        <br/><br/>
+        <div class="clearfix"></div>
+        <br/>
+        <div class="col-lg-6  col-lg-offset-3">
+            <div class="btn-group btn-group-justified">
+                <a th:href="@{/}" class="btn btn-primary">Return Dashboard</a>
+            </div>
+
+        </div>
+        <!--
+          // Hidden Exception Details  - this is not a recommendation, but here is
+          // how you hide an exception in the page using Thymeleaf
+          -->
+        <div th:utext="'&lt;!--'" th:remove="tag"></div>
+        <div th:utext="'Failed URL: ' +  ${url}" th:remove="tag">${url}</div>
+        <div th:utext="'Exception: ' + ${exception.message}" th:remove="tag">${exception.message}</div>
+        <ul th:remove="tag">
+            <li th:each="ste : ${exception.stackTrace}" th:remove="tag"><span
+                    th:utext="${ste}" th:remove="tag">${ste}</span></li>
+        </ul>
+
+    </div>
+
+
+</body>
+</html>
+
