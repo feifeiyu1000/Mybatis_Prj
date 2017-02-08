@@ -1,5 +1,6 @@
 import com.springHello.bean.Book;
 import com.springHello.controller.HomeController;
+import com.springHello.exception.BookNotFoundException;
 import com.springHello.service.BookService;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,6 +42,7 @@ public class HomeControllerTest {
     @InjectMocks
     private HomeController homeController;
 
+
     private MockMvc mockMvc;
 
     @Before
@@ -67,5 +69,15 @@ public class HomeControllerTest {
                 .andExpect(view().name("booksList"))
                 .andExpect(model().attribute("books",bookList));
     }
+
+    @Test
+    public void testHomeUrl_ShouldReturnIndexView() throws Exception {
+        mockMvc.perform(get("/","/home"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
+    }
+
+
+
 
 }
