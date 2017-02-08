@@ -27,9 +27,9 @@ public class HomeController {
     public String getHome() {
         return "index";
     }
+
     @RequestMapping(path = {"/"}, method = RequestMethod.GET)
-    public String getIndex() throws Exception {
-        if(true) throw new Exception();
+    public String getIndex(){
         return "index";
     }
 
@@ -42,9 +42,9 @@ public class HomeController {
     }
 
     @RequestMapping("/book/{id}")
-    public String getBook(@PathVariable("id") long id, Model model){
+    public String getBook(@PathVariable("id") long id, Model model) throws BookNotFoundException {
         Book book = bookService.findBookById(id);
-        if(true) throw new BookNotFoundException();
+        if(book == null || book.getId() <= 0) throw new BookNotFoundException("Book doesn't exist");
 
         model.addAttribute(book);
         return "book";
