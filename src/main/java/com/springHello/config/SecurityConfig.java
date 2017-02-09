@@ -71,5 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
-
+    //TODO: config login page "login.html";
+    //TODO: config registartion "page register.html"
 }
