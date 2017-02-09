@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface UserMapper {
     List<User> findAllUser();
+    User findUserWithRoleById(Long id);
 }

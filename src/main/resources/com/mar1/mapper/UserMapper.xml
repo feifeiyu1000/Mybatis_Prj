@@ -6,16 +6,40 @@
 
 <mapper namespace="com.springHello.mapper.UserMapper">
 
-    <!-- Tutor result map -->
+    <!-- ROLE result map -->
+    <resultMap id="RoleResult" type="Role">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <!-- UserWithRoleResult result map -->
+    <resultMap id="UserWithRoleResult" type="User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="enabled" column="enabled"/>
+        <association property="role" resultMap="RoleResult"/>
+    </resultMap>
+
+    <!-- UserResult result map -->
     <resultMap id="UserResult" type="User">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
         <result property="name" column="name"/>
+        <result property="enabled" column="enabled"/>
     </resultMap>
 
     <select id="findAllUser" resultMap="UserResult">
-        SELECT * FROM USER where id="1" or id="2"
+        SELECT * FROM USER
+    </select>
+
+    <select id="findUserWithRoleById" parameterMap="long" resultMap="UserWithRoleResult">
+        SELECT u.id, u.name, u.username, u.password, u.enabled, r.name
+          FROM USER u LEFT OUTER JOIN ROLR r ON
+          u.id = r.id
+          WHERE u.id = #{id}
     </select>
 
 

@@ -1,6 +1,5 @@
 import com.springHello.bean.User;
 import com.springHello.mapper.UserMapper;
-import com.springHello.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
