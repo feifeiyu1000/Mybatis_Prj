@@ -42,7 +42,7 @@
           WHERE u.id = #{id}
     </select>
 
-    <select id="loadUserByUsername" parameterType="string" resultMap="UserWithRoleResult">
+    <select id="findUserByUsername" parameterType="string" resultMap="UserWithRoleResult">
         SELECT u.id, u.name, u.username, u.password, u.enabled, r.role_name
           FROM USER as u LEFT OUTER JOIN ROLE as r ON
           u.id = r.id

@@ -30,8 +30,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDetails findUserByUsername(String username) {
+        return findUserByUsername(username);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) {
-        User user =  userMapper.loadUserByUsername(username);
+        User user =  userMapper.findUserByUsername(username);
         if(user == null) throw new UsernameNotFoundException("User not found");
         return user;
     }
