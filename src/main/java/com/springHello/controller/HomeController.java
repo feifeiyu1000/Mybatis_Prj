@@ -6,10 +6,7 @@ import com.springHello.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,25 +20,22 @@ public class HomeController {
     private BookService bookService;
 
 
-    @RequestMapping(path = {"/home"}, method = RequestMethod.GET)
+
+    @GetMapping({"/home","/"})
     public String getHome() {
         return "index";
     }
 
-    @RequestMapping(path = {"/"}, method = RequestMethod.GET)
-    public String getIndex(){
-        return "index";
-    }
 
 
-    @RequestMapping("/books")
+    @GetMapping("/books")
     public String getBooks(Model model){
         List<Book> books = bookService.findAllBooks();
         model.addAttribute("books",books);
         return "booksList";
     }
 
-    @RequestMapping("/book/{id}")
+    @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") long id, Model model) throws BookNotFoundException {
         Book book = bookService.findBookById(id);
         if(book == null || book.getId() <= 0) throw new BookNotFoundException("Book doesn't exist");
@@ -50,7 +44,7 @@ public class HomeController {
         return "book";
     }
 
-    @RequestMapping("/book/delete/{id}")
+    @GetMapping("/book/delete/{id}")
     public String deleteBook(@PathVariable("id") long id) throws BookNotFoundException {
         if(bookService.findBookById(id) != null)
             bookService.deleteBook(id);
@@ -59,7 +53,7 @@ public class HomeController {
         return "redirect:/books";
     }
 
-    @RequestMapping(path = "/error", method = RequestMethod.GET)
+    @GetMapping(path = "/error")
     public String getError(){
         return "errorPage";
     }

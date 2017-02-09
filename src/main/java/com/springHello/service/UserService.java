@@ -1,6 +1,7 @@
 package com.springHello.service;
 
 import com.springHello.bean.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
 public interface UserService {
     List<User> findAllUser();
     User findUserWithRoleById(Long id);
-    User findUserByUsername(String username);
+    UserDetails loadUserByUsername(String username);
 }
