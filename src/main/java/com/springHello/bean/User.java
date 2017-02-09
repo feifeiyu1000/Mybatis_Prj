@@ -103,4 +103,17 @@ public class User implements UserDetails{
     public void setBooks(Collection<Book> books) {
         this.books = books;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", name='" + name + '\'' +
+                ", role=" + role +
+                ", books=" + books +
+                '}';
+    }
 }

@@ -1,3 +1,5 @@
+package service;
+
 import com.springHello.bean.Book;
 import com.springHello.service.BookService;
 import org.junit.Test;

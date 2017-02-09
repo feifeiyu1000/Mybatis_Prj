@@ -9,7 +9,7 @@
     <!-- ROLE result map -->
     <resultMap id="RoleResult" type="Role">
         <id property="id" column="id"/>
-        <result property="name" column="name"/>
+        <result property="name" column="role_name"/>
     </resultMap>
 
     <!-- UserWithRoleResult result map -->
@@ -35,11 +35,18 @@
         SELECT * FROM USER
     </select>
 
-    <select id="findUserWithRoleById" parameterMap="long" resultMap="UserWithRoleResult">
-        SELECT u.id, u.name, u.username, u.password, u.enabled, r.name
-          FROM USER u LEFT OUTER JOIN ROLR r ON
+    <select id="findUserWithRoleById" parameterType="long" resultMap="UserWithRoleResult">
+        SELECT u.id, u.name, u.username, u.password, u.enabled, r.role_name
+          FROM USER as u LEFT OUTER JOIN ROLE as r ON
           u.id = r.id
           WHERE u.id = #{id}
+    </select>
+
+    <select id="findUserByUsername" parameterType="string" resultMap="UserWithRoleResult">
+        SELECT u.id, u.name, u.username, u.password, u.enabled, r.role_name
+          FROM USER as u LEFT OUTER JOIN ROLE as r ON
+          u.id = r.id
+          WHERE u.username = #{username}
     </select>
 
 
