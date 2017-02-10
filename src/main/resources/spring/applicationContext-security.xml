@@ -6,11 +6,25 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <!-- desable securoty on resources folder-->
+    <http pattern="/resources/**" security="none"/>
 
-    <http>
-        <intercept-url pattern="/**" access="hasRole('USER')" />
-        <form-login />
-        <logout />
+    <!-- http configuration "access-control"-->
+    <http use-expressions="false">
+        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/**" access="ROLE_USER" />
+        <form-login login-page='/login'/>
     </http>
+
+    <!-- User authentication method " "-->
+    <authentication-manager>
+        <authentication-provider>
+            <!--  in-memory authentication -->
+            <user-service>
+                <user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="bob" password="bobspassword" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
 
 </beans:beans>
