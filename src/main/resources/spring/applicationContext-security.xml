@@ -7,5 +7,10 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 
+    <http>
+        <intercept-url pattern="/**" access="hasRole('USER')" />
+        <form-login />
+        <logout />
+    </http>
 
 </beans:beans>
