@@ -21,13 +21,27 @@
         <logout delete-cookies="JSESSIONID" logout-success-url="/login" />
     </http>
 
+    <!-- Adding a Password Encoder -->
+    <beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <!--
+	Usernames/Passwords are
+		jimi/jimispassword
+		bob/bobspassword
+	-->
     <!-- User authentication method " "-->
     <authentication-manager>
         <authentication-provider>
+            <!-- reference to bcryptEncoder bean -->
+            <password-encoder ref="bcryptEncoder"/>
             <!--  in-memory authentication -->
             <user-service>
-                <user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="bob" password="bobspassword" authorities="ROLE_USER" />
+                <user name="jimi" password="d7e6351eaa13189a5a3641bab846c8e8c69ba39f"
+                      authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="rod" password="$2a$10$75pBjapg4Nl8Pzd.3JRnUe7PDJmk9qBGwNEJDAlA3V.dEJxcDKn5O"
+                      authorities="ROLE_ADMIN,ROLE_USER"/>
+                <user name="bob" password="4e7421b1b8765d8f9406d87e7cc6aa784c4ab97f"
+                      authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
