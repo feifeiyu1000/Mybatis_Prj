@@ -12,7 +12,13 @@ public interface BookService {
     Book findBookById(Long id);
     List<Book> findAllBooks();
     void insertBook(Book book);
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
+    /**
+     *
+     * @param id : book id
+     * uncomment @PreAuthorized annotation to use PreAuthorize spring Security
+     */
+    //@PreAuthorize("hasAuthority('ROLE_ADMIN')")
     void deleteBook(Long id);
     Book findBookByName(String name);
 }

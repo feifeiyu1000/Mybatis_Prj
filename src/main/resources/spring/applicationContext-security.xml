@@ -12,7 +12,16 @@
     -->
 
     <!--The following declaration would enable support for Spring Security’s @PreAuthorize-->
+    <!-- See BookService.java !!-->
     <global-method-security pre-post-annotations="enabled" />
+
+    <!-- This will protect all methods on beans declared in the application context whose classes are in the
+    com.springHello package and whose class names end in "Service". Only users with the ROLE_USER role will be able
+    to invoke these methods. -->
+    <global-method-security>
+        <protect-pointcut expression="execution(* com.springHello.*Service.*(..))"
+                          access="ROLE_USER"/>
+    </global-method-security>
 
     <!-- desable securoty on resources folder-->
     <http pattern="/resources/**" security="none"/>
