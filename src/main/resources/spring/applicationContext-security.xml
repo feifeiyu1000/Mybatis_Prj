@@ -26,12 +26,13 @@
     -->
 
 
-    <!-- desable securoty on resources folder-->
+    <!-- desable security on resources folder-->
     <http pattern="/resources/**" security="none"/>
+
 
     <!-- http configuration "access-control"-->
     <http use-expressions="false">
-        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_ADMIN" />
         <!-- form login "/login" with Default Post-Login Destination "/books" -->
         <!-- For even more control over the destination,
