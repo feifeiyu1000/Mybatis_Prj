@@ -18,10 +18,13 @@
     <!-- This will protect all methods on beans declared in the application context whose classes are in the
     com.springHello package and whose class names end in "Service". Only users with the ROLE_USER role will be able
     to invoke these methods. -->
+    <!--
     <global-method-security>
         <protect-pointcut expression="execution(* com.springHello.*Service.*(..))"
                           access="ROLE_USER"/>
     </global-method-security>
+    -->
+
 
     <!-- desable securoty on resources folder-->
     <http pattern="/resources/**" security="none"/>
@@ -29,7 +32,7 @@
     <!-- http configuration "access-control"-->
     <http use-expressions="false">
         <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <intercept-url pattern="/**" access="ROLE_USER" />
+        <intercept-url pattern="/**" access="ROLE_ADMIN" />
         <!-- form login "/login" with Default Post-Login Destination "/books" -->
         <!-- For even more control over the destination,
         you can use the authentication-success-handler-ref-->
@@ -51,10 +54,19 @@
 	-->
     <!-- User authentication method " "-->
     <authentication-manager>
-        <authentication-provider>
-            <!-- reference to bcryptEncoder bean -->
+        <authentication-provider user-service-ref="userServiceImpl">
             <password-encoder ref="bcryptEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+        <!--
+        <authentication-provider>
+        -->
+            <!-- reference to bcryptEncoder bean -->
+        <!--
+            <password-encoder ref="bcryptEncoder"/>
+        -->
             <!--  in-memory authentication -->
+            <!--
             <user-service>
                 <user name="jimi" password="d7e6351eaa13189a5a3641bab846c8e8c69ba39f"
                       authorities="ROLE_USER, ROLE_ADMIN" />
@@ -63,7 +75,11 @@
                 <user name="bob" password="4e7421b1b8765d8f9406d87e7cc6aa784c4ab97f"
                       authorities="ROLE_USER" />
             </user-service>
+
         </authentication-provider>
     </authentication-manager>
+    -->
+    <beans:bean id="userServiceImpl" class="com.springHello.service.UserServiceImpl">
+    </beans:bean>
 
 </beans:beans>
