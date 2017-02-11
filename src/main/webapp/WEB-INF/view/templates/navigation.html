@@ -114,6 +114,11 @@
             <li class="divider"></li>
             <li><a href="/login?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
+            <li>
+                <form method="post" th:action="@{/logout}" th:id="logout-form">
+                    <a href="#" onclick="document.getElementById('logout-form').submit()"><i class="fa fa-sign-out fa-fw"></i>  Logout</a>
+                </form>
+            </li>
         </ul>
         <!-- /.dropdown-user -->
     </li>

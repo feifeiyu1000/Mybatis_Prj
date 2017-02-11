@@ -18,7 +18,10 @@
         you can use the authentication-success-handler-ref-->
         <form-login login-page='/login'  default-target-url='/books'
                     always-use-default-target='true' />
-        <logout delete-cookies="JSESSIONID" logout-success-url="/login" />
+
+        <!-- CSRF is enabled so you should send /logout-->
+        <logout delete-cookies="JSESSIONID" logout-url="/logout" />
+
     </http>
 
     <!-- Adding a Password Encoder -->
