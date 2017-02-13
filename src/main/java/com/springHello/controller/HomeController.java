@@ -45,12 +45,14 @@ public class HomeController {
     }
 
     @GetMapping("/book/delete/{id}")
-    public String deleteBook(@PathVariable("id") long id) throws BookNotFoundException {
+    public String deleteBook(@PathVariable("id") long id,Model model) throws BookNotFoundException {
         if(bookService.findBookById(id) != null)
             bookService.deleteBook(id);
         else
             throw new BookNotFoundException("Book doesn't exist");
-        return "redirect:/books";
+        List<Book> books = bookService.findAllBooks();
+        model.addAttribute("books",books);
+        return "templates/booksListTemp :: bookList";
     }
 
     @GetMapping(path = "/error")
