@@ -25,9 +25,9 @@ to compile project with **Jetty** add the following lines to pom.xml file
  </plugin>
 ```
 
- 1. Create schema data Base : *textMyBatis*
+ 1. Create schema data Base : *testMyBatis*
  2. Do migrate with Flyway
- 3.  run the following commands :
+ 3. run the following commands :
 ```
 mvn jetty:run
 ```
