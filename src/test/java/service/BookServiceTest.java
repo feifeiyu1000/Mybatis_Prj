@@ -29,27 +29,27 @@ public class BookServiceTest {
     @Test
     public void testFindAllBooks(){
         List<Book> books = bookService.findAllBooks();
-        assertEquals(books.size(),5);
+        assertEquals(books.size(),11);
         books.stream().forEach(System.out::println);
     }
 
     @Test
     public void testInsertBook(){
         Book book = new Book();
-        book.setName("AngularJs");
+        book.setName("AngularJs3");
         book.setNbrPage(200);
         book.setCreationDate(new Date());
         bookService.insertBook(book);
         List<Book> books = bookService.findAllBooks();
         Long count = books.stream()
-                .filter((b) -> b.getName().equals("AngularJs"))
+                .filter((b) -> b.getName().equals("AngularJs3"))
                 .count();
         assertEquals(Optional.ofNullable(count), Optional.of(1L));
     }
 
     @Test
     public void testDeleteBook(){
-        Book book1 = bookService.findBookByName("AngularJs");
+        Book book1 = bookService.findBookByName("AngularJs3");
         bookService.deleteBook(book1.getId());
         Book book = bookService.findBookById(book1.getId());
         assertNull(book);
@@ -57,7 +57,7 @@ public class BookServiceTest {
 
     @Test
     public void testFindBookByName(){
-        Book book = bookService.findBookByName("Java");
+        Book book = bookService.findBookByName("Sonar");
         assertNotNull(book);
     }
 
@@ -79,7 +79,7 @@ public class BookServiceTest {
         book.setName("JavaEE");
         book.setNbrPage(500);
         book.setCreationDate(myDate);*/
-        Book book1 = bookService.findBookById(1L);
+        Book book1 = bookService.findBookById(5L);
         assertNotNull(book1);
     }
 

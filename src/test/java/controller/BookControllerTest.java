@@ -14,36 +14,25 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.Assert.assertNotNull;
-
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 /**
- * Created by mar1 on 2/7/17.
+ * Created by mar1 on 2/14/17.
  */
-public class HomeControllerTest {
-
-    // config mock without annotation
-    /*
-    private BookService bookService;
-    private BookServiceImpl bookServiceImpl;
-
-    @Before
-    public void setupMock(){
-        bookServiceImpl = new BookServiceImpl();
-        bookService = mock(BookService.class);
-    }
-    */
-
-    // config mock with annotation
+public class BookControllerTest {
 
     @Mock
     private BookService bookService;
 
 
     @InjectMocks
-    private HomeController homeController;
+    private BookController bookController;
 
 
     private MockMvc mockMvc;
@@ -51,25 +40,27 @@ public class HomeControllerTest {
     @Before
     public void setupMock(){
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(homeController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(bookController).build();
     }
 
     @Test
     public void testMockCreation(){
         assertNotNull(bookService);
-        assertNotNull(homeController);
+        assertNotNull(bookController);
     }
-
-
 
     @Test
-    public void testHomeUrl_ShouldReturnIndexView() throws Exception {
-        mockMvc.perform(get("/","/home"))
+    public void testBooksUrl_shouldReturnBookListView() throws Exception {
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(new Book());
+        bookList.add(new Book());
+
+        when(bookService.findAllBooks()).thenReturn((List) bookList);
+        mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"));
+                .andExpect(view().name("booksList"))
+                .andExpect(model().attribute("books",bookList));
     }
-
-
 
 
 }
