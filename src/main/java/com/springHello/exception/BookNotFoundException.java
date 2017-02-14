@@ -1,8 +1,5 @@
 package com.springHello.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 /**
  * Created by mar1 on 2/3/17.
  */
