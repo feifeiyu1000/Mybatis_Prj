@@ -28,6 +28,8 @@ public class LoginController {
     public String RootForm(){
         return "redirect:/";
     }
+
+    // manuel config logout method
     /*
     @GetMapping("/logout")
     public String getLogout(HttpServletResponse response){

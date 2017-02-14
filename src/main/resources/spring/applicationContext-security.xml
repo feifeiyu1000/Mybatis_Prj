@@ -50,8 +50,7 @@
 
     <!--
 	Usernames/Passwords are
-		jimi/jimispassword
-		bob/bobspassword
+		rod/koala
 	-->
     <!-- User authentication method " "-->
     <authentication-manager>

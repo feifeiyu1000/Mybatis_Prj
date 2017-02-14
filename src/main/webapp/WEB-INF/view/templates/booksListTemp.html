@@ -28,12 +28,12 @@
                 <td th:text="${book.nbrPage}"></td>
                 <td th:text="${book.creationDate}"></td>
                 <td class="text-center">
-                    <!--  <a th:href="@{/book/}+${book.id}" type="button" class="btn btn-info custom-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</a>-->
-                    <button type="button" th:id="'delete_'+${book.id}" class="btn btn-info custom-btn"><i class="fa fa-list"></i> Test</button>
-                    <button type="button" th:id="'edit_'+${book.id}" class="btn btn-info custom-btn"><i class="fa fa-list"></i> Test</button>
+
                     <button type="button" class="btn btn-info custom-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</button>
-                    <a th:href="@{/book/edit/}+${book.id}" type="button" class="btn btn-warning custom-btn"><i class="fa fa-edit"></i> edit</a>
-                    <a th:href="@{/book/delete/}+${book.id}" type="button" class="btn btn-danger custom-btn"><i class="fa fa-trash-o"></i> delete</a>
+                    <!-- start Edit Not yet work
+                    <button type="button" th:id="'edit_'+${book.id}" class="btn btn-warning custom-btn"><i class="fa fa-list"></i> edit</button>
+                    End Edit -->
+                    <button type="button" th:id="'delete_'+${book.id}" class="btn btn-danger custom-btn"><i class="fa fa-list"></i> delete</button>
                 </td>
             </tr>
             </tbody>
