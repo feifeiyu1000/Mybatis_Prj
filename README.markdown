@@ -8,7 +8,7 @@ Flyway
 ----------
 Flyway should be a fundamental part of any Java EE application devops. It simplifies database migration and seamlessly integrates with your application lifecycle.
 
-Compilling
+Compiling
 ---------------
 to compile project with **Jetty** add the following lines to pom.xml file
 ```
