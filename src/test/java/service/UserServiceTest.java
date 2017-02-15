@@ -30,12 +30,7 @@ public class UserServiceTest {
 
 
 
-    @Test
-    public void testFindAllBooks(){
-        List<User> users = userService.findAllUser();
-        assertEquals(users.size(),3);
-        users.stream().forEach(System.out::println);
-    }
+
 
     @Test
     public void testFindUserWithRoleById(){
