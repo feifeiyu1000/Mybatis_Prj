@@ -2,7 +2,10 @@ package com.springHello.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 
 /**
@@ -16,6 +19,13 @@ public class HomeController {
     public String getHome() {
         return "index";
     }
+    /*
+    public String getHome(Principal principal,Model model) {
+
+        model.addAttribute("principalName",principal.getName());
+        System.out.println("================================================>>>>>>>>>>>>>>"+principal.toString());
+        return "index";
+    }*/
 
 
 
