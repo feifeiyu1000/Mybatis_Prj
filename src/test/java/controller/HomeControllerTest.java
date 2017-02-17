@@ -1,8 +1,6 @@
 package controller;
 
-import com.springHello.bean.Book;
-import com.springHello.controller.BookController;
-import com.springHello.controller.HomeController;
+import com.springHello.web.controller.HomeController;
 import com.springHello.service.BookService;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,11 +10,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.ArrayList;
-import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 /**

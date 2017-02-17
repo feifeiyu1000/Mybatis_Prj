@@ -1,8 +1,7 @@
 package controller;
 
 import com.springHello.bean.Book;
-import com.springHello.controller.BookController;
-import com.springHello.controller.HomeController;
+import com.springHello.web.controller.BookController;
 import com.springHello.service.BookService;
 import org.junit.Before;
 import org.junit.Test;

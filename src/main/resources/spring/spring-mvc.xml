@@ -10,7 +10,7 @@
 
 
     <!-- To use @Controller -->
-    <context:component-scan base-package="com.springHello.controller,com.springHello.exception"/>
+    <context:component-scan base-package="com.springHello.web.controller,com.springHello.exception"/>
 
 
 
@@ -38,6 +38,11 @@
 
     <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
+    </bean>
+
+    <!-- source messages -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/classes/messages" />
     </bean>
 
 </beans>

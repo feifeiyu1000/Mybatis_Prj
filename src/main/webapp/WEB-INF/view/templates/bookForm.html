@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+<div class="panel-header" th:fragment="bookForm" >
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <form role="form" th:action="@{/book/create}" th:object="${book}" th:method="post">
+                    <div  th:class="${#fields.hasErrors('name')}? 'form-group has-error' : 'form-group' ">
+                        <label>Book Title</label>
+                        <input th:class="form-control" th:field="*{name}"
+                               placeholder="Enter Title book" />
+                        <p class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Example block-level help text here.</p>
+                    </div>
+                    <div th:class="${#fields.hasErrors('nbrPage')}? 'form-group has-error' : 'form-group' ">
+                        <label>Page number</label>
+                        <input class="form-control" placeholder="Enter number of page"
+                               th:field="*{nbrPage}" />
+                        <p class="help-block" th:if="${#fields.hasErrors('nbrPage')}" th:errors="*{nbrPage}">Example block-level help text here.</p>
+                    </div>
+                    <div th:class="${#fields.hasErrors('creationDate')}? 'form-group has-error' : 'form-group' ">
+                        <label>Creation date</label>
+                        <input class="form-control" placeholder="Enter text"
+                               th:field="*{creationDate}" />
+                        <p class="help-block" th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}">Example block-level help text here.</p>
+                    </div>
+                    <button type="submit" class="btn btn-default">Create Book</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
+

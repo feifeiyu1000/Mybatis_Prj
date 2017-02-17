@@ -1,4 +1,4 @@
-package com.springHello.controller;
+package com.springHello.web.advice;
 
 import com.springHello.bean.User;
 import org.springframework.security.core.Authentication;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 @ControllerAdvice
 public class UserControllerAdvice {
+
 
     @ModelAttribute("currentUser")
     public User getCurrentUser(Authentication authentication){

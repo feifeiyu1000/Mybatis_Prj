@@ -58,4 +58,18 @@ public class Book implements Serializable {
                 ", creationDate=" + creationDate +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (nbrPage != book.nbrPage) return false;
+        if (!id.equals(book.id)) return false;
+        if (name != null ? !name.equals(book.name) : book.name != null) return false;
+        return creationDate != null ? creationDate.equals(book.creationDate) : book.creationDate == null;
+    }
+
 }

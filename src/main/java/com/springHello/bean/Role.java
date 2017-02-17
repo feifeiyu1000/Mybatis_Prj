@@ -1,9 +1,11 @@
 package com.springHello.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by mar1 on 2/9/17.
  */
-public class Role {
+public class Role implements Serializable{
 
     private Long id;
     private String name;

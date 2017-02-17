@@ -1,13 +1,10 @@
-package com.springHello.controller;
+package com.springHello.web.controller;
 
 import com.springHello.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by mar1 on 2/10/17.
