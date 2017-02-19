@@ -2,6 +2,7 @@ package com.springHello.service;
 
 import com.springHello.bean.User;
 import com.springHello.mapper.UserMapper;
+import com.springHello.spring.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,6 +39,6 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String username) {
         User user =  userMapper.findUserByUsername(username);
         if(user == null) throw new UsernameNotFoundException("User not found");
-        return user;
+        return new CustomUserDetails(user);
     }
 }

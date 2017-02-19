@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by root on 1/26/17.
  */
-public class User implements UserDetails,Serializable{
+public class User implements Serializable{
 
     private Long id;
     private String username;
@@ -35,6 +35,15 @@ public class User implements UserDetails,Serializable{
 
     private Collection<Book> books;
 
+    public User(User user) {
+        this.id = user.getId();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.enabled = true;
+        this.name = user.getName();
+        this.role = user.getRole();
+    }
+
     public User() {
     }
 
@@ -50,36 +59,11 @@ public class User implements UserDetails,Serializable{
         return username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(role.getName()));
-        return authorities;
-    }
+
 
     public String getPassword() {
         return password;
