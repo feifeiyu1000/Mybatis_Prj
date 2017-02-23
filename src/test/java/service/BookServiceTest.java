@@ -29,7 +29,7 @@ public class BookServiceTest {
     @Test
     public void testFindAllBooks(){
         List<Book> books = bookService.findAllBooks();
-        assertEquals(books.size(),11);
+        assertEquals(13,books.size());
         books.stream().forEach(System.out::println);
     }
 
@@ -79,7 +79,7 @@ public class BookServiceTest {
         book.setName("JavaEE");
         book.setNbrPage(500);
         book.setCreationDate(myDate);*/
-        Book book1 = bookService.findBookById(5L);
+        Book book1 = bookService.findBookById(6L);
         assertNotNull(book1);
     }
 

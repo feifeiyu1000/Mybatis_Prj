@@ -37,7 +37,7 @@ public class UserServiceTest {
         User user = userService.findUserWithRoleById(1L);
         assertNotNull(user);
         assertNotNull(user.getRole());
-        assertEquals(user.getRole().getName(),"ADMIN");
+        assertEquals("ROLE_ADMIN",user.getRole().getName());
 
     }
 

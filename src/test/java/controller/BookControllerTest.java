@@ -57,7 +57,7 @@ public class BookControllerTest {
         when(bookService.findAllBooks()).thenReturn((List) bookList);
         mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("booksList"))
+                .andExpect(view().name("/booksList"))
                 .andExpect(model().attribute("books",bookList));
     }
 
