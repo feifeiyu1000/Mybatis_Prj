@@ -29,24 +29,23 @@
                 <td th:text="${book.creationDate}"></td>
                 <td class="text-center">
 
-                    <button type="button" class="btn btn-info custom-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</button>
+                    <button type="button" class="btn btn-info custom-btn btn-list" data-toggle="modal" data-target="#myModal"><i class="fa fa-list"></i> detail</button>
                     <!-- start Edit Not yet work
                     <button type="button" th:id="'edit_'+${book.id}" class="btn btn-warning custom-btn"><i class="fa fa-list"></i> edit</button>
                     End Edit -->
-                    <button type="button" th:id="'delete_'+${book.id}" class="btn btn-danger custom-btn"><i class="fa fa-list"></i> delete</button>
+                    <button type="button" th:id="'delete_'+${book.id}" class="btn btn-danger custom-btn btn-list"><i class="fa fa-list"></i> delete</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
     <!-- /.table-responsive -->
-    <script th:src="@{/resources/vendor/jquery/jquery.min.js}"></script>
     <!-- If you want to send request and user load in javascript without JQUERY :
         http://stackoverflow.com/questions/17901116/i-need-the-equivalent-of-load-to-js
     -->
     <script>
         /*<![CDATA[*/
-            $("button").on("click", function () {
+            $(".btn-list").on("click", function () {
                 var urlTypeWithId = $(this).attr('id');
                 var urlType = urlTypeWithId.split("_")[0];
                 var id = urlTypeWithId.split("_")[1];
